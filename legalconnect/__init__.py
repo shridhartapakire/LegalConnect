@@ -1,0 +1,1 @@
+"""Legal Connect project package."""

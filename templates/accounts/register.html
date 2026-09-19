@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Create {{ role_label }} account | Legal Connect{% endblock %}
+{% block content %}
+<section class="auth-section"><div class="auth-card">
+  <p class="eyebrow">{{ role_label }} account</p><h1>Create your account</h1>
+  <p class="muted">You can complete only the information needed for the next step. We do not create public profiles automatically.</p>
+  <form method="post" novalidate>{% csrf_token %}
+    {% for field in form %}
+      <div class="field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<p class="help-text">{{ field.help_text|safe }}</p>{% endif %}{% if field.errors %}<p class="field-error">{{ field.errors|striptags }}</p>{% endif %}</div>
+    {% endfor %}
+    <button class="button button-full" type="submit">Create {{ role_label|lower }} account</button>
+  </form>
+  <p class="muted">Already registered? <a href="{% url 'accounts:login' %}">Sign in</a>.</p>
+</div></section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Legal Connect helps people in Chikodi and nearby areas connect with advocates.">
+  <title>{% block title %}Legal Connect{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="container navigation">
+      <a class="brand" href="{% url 'core:home' %}" aria-label="Legal Connect home">
+        <span class="brand-mark" aria-hidden="true">LC</span>
+        <span>Legal Connect</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="{% url 'core:home' %}#how-it-works">How it works</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'core:dashboard_redirect' %}">Dashboard</a></li>
+            {% if user.is_staff %}<li><a href="/admin/">Management</a></li>{% endif %}
+            <li>
+              <form action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="link-button" type="submit">Sign out</button>
+              </form>
+            </li>
+          {% else %}
+            <li><a href="{% url 'accounts:login' %}">Sign in</a></li>
+            <li><a class="button button-small" href="{% url 'accounts:register' 'CLIENT' %}">Get started</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  {% if messages %}
+    <div class="container messages" aria-live="polite">
+      {% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}
+    </div>
+  {% endif %}
+
+  <main id="main-content">{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p><strong>Legal Connect</strong> · Chikodi and surrounding areas</p>
+      <p>Legal Connect is not an emergency-response service and does not replace legal advice.</p>
+    </div>
+  </footer>
+</body>
+</html>
