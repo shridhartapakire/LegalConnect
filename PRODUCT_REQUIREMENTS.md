@@ -160,3 +160,7 @@ Metrics must use minimised, aggregated data and must not train AI or market to u
 7. Public advocate-profile policy, including whether platform reviews/ratings are enabled at launch and their moderation/dispute rules.
 8. Emergency disclaimer, reporting, safety escalation workflow, and local help-resource owner.
 9. Payments remain excluded from MVP; the future commercial model may be decided later.
+
+## Phase 2 implementation status
+
+Phase 2 delivers the advocate professional-profile and verification foundation. Advocates can complete a private/publicly separated profile, select administrator-managed practice areas, languages, localities, and in-person/phone modes, then submit configurable professional evidence for staff review. A profile is public only when it is complete, actually verified, and explicitly published. Consultation, appointment, messaging, payments, AI, and notification workflows remain out of scope.

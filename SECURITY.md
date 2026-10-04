@@ -41,3 +41,9 @@ Admin access to content is not routine support access. Admins are never normal c
 4. Define verification-evidence access, reviewer training, and whether identity/professional data needs field-level encryption.
 5. Approve terms, privacy notice, user consent text, grievance/contact process, and an abuse/safety escalation procedure.
 6. Approve the precise point at which request documents become visible to the selected advocate after the conflict/capacity process.
+
+## Phase 2 verification controls
+
+Verification evidence is stored outside public URL routes and uses generated storage paths rather than user-controlled file paths. The application accepts only PDF, JPG/JPEG, and PNG evidence within the configured size limit. Every upload begins in a quarantined `PENDING` scan state; the local implementation intentionally has no scanner and never marks an upload clean automatically.
+
+Only the owning advocate or staff may request an authorised verification-document download, and neither may download it until its scan status is explicitly `CLEAN`. Clients and other advocates receive a forbidden response. Staff verification decisions use the controlled review workflow, record actor/status/comment history, and require a comment for more-information, rejection, suspension, and revocation decisions. Direct status fields are read-only in the Django admin interface.

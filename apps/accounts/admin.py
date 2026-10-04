@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import AdvocateProfile, ClientProfile, User
+from .models import AdvocateProfile, ClientProfile, Language, Locality, PracticeArea, User
 
 
 @admin.register(User)
@@ -29,6 +29,27 @@ class ClientProfileAdmin(admin.ModelAdmin):
 
 @admin.register(AdvocateProfile)
 class AdvocateProfileAdmin(admin.ModelAdmin):
-    list_display = ("user", "professional_name", "publication_status", "created_at")
-    list_filter = ("publication_status",)
+    list_display = ("user", "professional_name", "publication_status", "verification_status", "created_at")
+    list_filter = ("publication_status", "verification_status")
     search_fields = ("user__email", "professional_name")
+    filter_horizontal = ("practice_areas", "languages", "service_areas")
+    readonly_fields = ("verification_status", "publication_status", "public_id")
+
+
+@admin.register(PracticeArea)
+class PracticeAreaAdmin(admin.ModelAdmin):
+    list_display = ("name", "is_active", "display_order")
+    list_editable = ("is_active", "display_order")
+    prepopulated_fields = {"slug": ("name",)}
+
+
+@admin.register(Language)
+class LanguageAdmin(admin.ModelAdmin):
+    list_display = ("name", "code", "is_active", "display_order")
+    list_editable = ("is_active", "display_order")
+
+
+@admin.register(Locality)
+class LocalityAdmin(admin.ModelAdmin):
+    list_display = ("name", "district_or_region", "is_active", "display_order")
+    list_editable = ("is_active", "display_order")

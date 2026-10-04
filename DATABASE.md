@@ -80,3 +80,9 @@ User ──1:1── ClientProfile ──1:N── ConsultationRequest ──1:N
 - Keep minimum conflict-check intake, private request detail, advocate-facing information, and later AI-derived data distinguishable.
 - Soft deletion is not a privacy policy: use lifecycle states, legal holds, and scheduled irreversible deletion after an approved retention policy.
 - Confirm local legal retention obligations before finalising fields, encryption, backup retention, or deletion timing.
+
+## Phase 2 implementation status
+
+Implemented profile taxonomy records are `PracticeArea`, `Language`, and `Locality`; they are administrator-managed and advocates select from active records. `AdvocateProfile` stores separate publication and verification statuses, public professional fields, a private office-address field, and profile-completion inputs.
+
+The verification domain implements `VerificationEvidenceType`, `VerificationApplication`, `VerificationDocument`, `VerificationReviewEvent`, and `VerificationDocumentAccessEvent`. Verification documents have generated private storage paths, an original-filename record, byte-size record, replacement state, and scan status. They are not public URL resources. A document is only downloadable through an authorised application route after its status is explicitly `CLEAN`.

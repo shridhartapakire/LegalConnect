@@ -21,6 +21,7 @@
           <li><a href="{% url 'core:home' %}#how-it-works">How it works</a></li>
           {% if user.is_authenticated %}
             <li><a href="{% url 'core:dashboard_redirect' %}">Dashboard</a></li>
+            {% if user.is_advocate %}<li><a href="{% url 'accounts:edit_advocate_profile' %}">My profile</a></li>{% endif %}
             {% if user.is_staff %}<li><a href="/admin/">Management</a></li>{% endif %}
             <li>
               <form action="{% url 'accounts:logout' %}" method="post">

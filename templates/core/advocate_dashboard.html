@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Advocate dashboard | Legal Connect{% endblock %}
 {% block content %}
-<section class="dashboard-header"><div class="container"><p class="eyebrow">Advocate dashboard</p><h1>Welcome to your professional workspace</h1><p class="lead">Your advocate account is ready. Verification, profile publication, and consultation tools will be introduced in later approved phases.</p></div></section>
-<section class="section"><div class="container dashboard-grid">
-  <article class="dashboard-card"><h2>Profile status</h2><p>Your profile is private and in draft. It is not visible publicly.</p><span class="status-pill">Not published</span></article>
-  <article class="dashboard-card"><h2>Coming next</h2><p>Verification, availability, requests, and appointments will appear here after their dedicated implementation phases.</p></article>
+<section class="dashboard-header"><div class="container"><p class="eyebrow">Advocate dashboard</p><h1>Your professional onboarding</h1><p class="lead">Complete your profile, submit required professional evidence, and publish only after your actual verification is complete.</p></div></section>
+<section class="section"><div class="container">
+  <div class="dashboard-grid dashboard-grid-three">
+    <article class="dashboard-card"><p class="eyebrow">Profile completion</p><h2>{{ profile.completion_percentage }}%</h2><div class="progress"><span style="width: {{ profile.completion_percentage }}%"></span></div><p>Required public information must be complete before publication.</p></article>
+    <article class="dashboard-card"><p class="eyebrow">Verification</p><h2><span class="status-pill status-{{ profile.verification_status|lower }}">{{ profile.get_verification_status_display }}</span></h2><p>{% if application %}Application status: {{ application.get_status_display }}.{% else %}You have not started a verification application.{% endif %}</p></article>
+    <article class="dashboard-card"><p class="eyebrow">Public visibility</p><h2><span class="status-pill">{{ profile.get_publication_status_display }}</span></h2><p>{% if profile.is_publicly_visible %}Your profile is visible to clients.{% else %}Your profile is private until it is complete, verified, and explicitly published.{% endif %}</p></article>
+  </div>
+  <article class="next-action"><p class="eyebrow">Next required action</p><h2>{{ next_action }}</h2>
+    <div class="actions"><a class="button" href="{% url 'accounts:edit_advocate_profile' %}">Edit professional profile</a>
+      {% if not application or application.status == 'REJECTED' or application.status == 'REVOKED' %}<form method="post" action="{% url 'verification:start_application' %}">{% csrf_token %}<button class="button button-secondary" type="submit">Start verification</button></form>
+      {% elif application %}<a class="button button-secondary" href="{% url 'verification:application_detail' application.public_id %}">View verification application</a>{% endif %}
+      {% if profile.is_complete and profile.publication_status == 'DRAFT' %}<form method="post" action="{% url 'accounts:mark_profile_ready' %}">{% csrf_token %}<button class="button button-secondary" type="submit">Mark profile ready</button></form>{% endif %}
+      {% if profile.is_complete and profile.verification_status == 'VERIFIED' and profile.publication_status == 'READY_FOR_REVIEW' %}<form method="post" action="{% url 'accounts:publish_profile' %}">{% csrf_token %}<button class="button" type="submit">Publish profile</button></form>{% endif %}
+    </div>
+  </article>
 </div></section>
 {% endblock %}

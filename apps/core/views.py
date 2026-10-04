@@ -32,4 +32,22 @@ def client_dashboard(request: HttpRequest) -> HttpResponse:
 
 @role_required(User.PrimaryRole.ADVOCATE)
 def advocate_dashboard(request: HttpRequest) -> HttpResponse:
-    return render(request, "core/advocate_dashboard.html")
+    profile = request.user.advocate_profile
+    application = profile.verification_applications.first()
+    if not profile.is_complete:
+        next_action = "Complete your professional profile."
+    elif not application:
+        next_action = "Start your verification application."
+    elif application.status in {"DRAFT", "NEEDS_MORE_INFORMATION"}:
+        next_action = "Upload required evidence and submit your verification application."
+    elif application.status in {"SUBMITTED", "UNDER_REVIEW"}:
+        next_action = "Your verification application is awaiting review."
+    elif profile.publication_status != profile.PublicationStatus.PUBLISHED:
+        next_action = "Publish your verified profile when you are ready."
+    else:
+        next_action = "Your profile is visible to clients."
+    return render(
+        request,
+        "core/advocate_dashboard.html",
+        {"profile": profile, "application": application, "next_action": next_action},
+    )

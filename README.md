@@ -4,9 +4,9 @@ Legal Connect is a production-oriented legal-services platform being planned for
 
 ## Current phase
 
-**Phase 1 — project foundation.** This repository currently provides secure account foundations, client/advocate profile shells, role-based dashboard access, a public landing page, Django administration, and health checking.
+**Phase 2 — advocate profiles and verification.** The project now provides secure account foundations, professional advocate profile onboarding, configurable practice-area/language/locality taxonomies, private verification applications, and staff review workflows.
 
-It does **not** yet implement advocate verification, public advocate discovery, consultations, appointments, messaging, document uploads, payments, video, notification delivery, or AI.
+It does **not** yet implement consultation requests, appointments, client/advocate messaging, payments, video, WhatsApp/SMS, notification delivery, or AI. Advocate verification evidence remains quarantined until an actual malware-scanning service is configured; upload alone never marks evidence safe or an advocate verified.
 
 ## Technology stack
 
@@ -55,3 +55,5 @@ python manage.py makemigrations --check --dry-run
 ## Project boundaries
 
 The approved planning documents remain the source of truth. This is a modular Django monolith: `apps.accounts` owns identity, roles, and profile foundations; `apps.core` owns public/shared UI and protected dashboard shells. Later approved phases will add domains only when their workflows are implemented.
+
+`apps.verification` owns configurable evidence types, verification applications, review history, private evidence metadata, and staff-only review screens. Public advocate profiles are visible only when a profile is complete, actually verified through the workflow, and explicitly published.

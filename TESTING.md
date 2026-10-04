@@ -53,3 +53,7 @@ Before enabling each AI feature, test against an approved de-identified evaluati
 - Testing budget/tools, target browsers/devices, accessibility target (recommended: WCAG 2.2 AA), performance targets, and local language UAT participants.
 - Penetration-test provider/scope and remediation deadline.
 - Release approval roles, acceptable severity thresholds, and change-freeze/incident procedures.
+
+## Phase 2 automated coverage
+
+The implemented suite covers professional profile editing, selection of active practice-area/language/locality records, profile completion and publication gates, public visibility rules, verification submission, required-evidence validation, staff approval, rejection-reason validation, suspension/revocation, review history, private document access, and staff-only verification management. Existing Phase 1 account, authentication, dashboard-role, public-page, and health tests remain part of the suite.

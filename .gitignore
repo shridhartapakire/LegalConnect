@@ -11,6 +11,7 @@ env/
 *.sqlite3
 staticfiles/
 media/
+private_media/
 
 # Environment and secrets
 .env
@@ -29,3 +30,5 @@ htmlcov/
 # OS
 Thumbs.db
 .DS_Store
+
+profile_photos/

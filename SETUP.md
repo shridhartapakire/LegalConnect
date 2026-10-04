@@ -55,6 +55,17 @@ python manage.py runserver
 
 Visit `http://127.0.0.1:8000/`. Stop the server with `Ctrl+C`.
 
+## Advocate verification workflow in development
+
+1. Create a local advocate account at `/account/register/ADVOCATE/`.
+2. Complete the professional profile from the advocate dashboard.
+3. Create a local administrator with `python manage.py createsuperuser` and sign in at `/admin/`.
+4. In Django administration, configure the verification evidence types required by your approved platform policy. Do not invent or publish a legal policy merely for testing.
+5. Return to the advocate dashboard, start the verification application, upload allowed evidence, and submit it.
+6. Staff review is available at `/verification/management/` for a signed-in staff user.
+
+The local project deliberately has no malware-scanning provider. Uploaded verification evidence remains quarantined and cannot be downloaded until a real scanning integration marks it safe. Do not use local uploads as real professional evidence.
+
 ## 7. Run checks and tests
 
 In a second PowerShell window with the virtual environment activated:
