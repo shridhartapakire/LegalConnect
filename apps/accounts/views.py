@@ -7,7 +7,7 @@ from django.http import FileResponse, Http404, HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 
-from .forms import AdvocateProfileForm, LoginForm, RegistrationForm
+from .forms import AdvocateProfileForm, ClientProfileForm, LoginForm, RegistrationForm
 from .models import AdvocateProfile, User
 
 
@@ -54,6 +54,22 @@ def edit_advocate_profile(request: HttpRequest) -> HttpResponse:
         messages.success(request, "Your professional profile has been saved.")
         return redirect("accounts:edit_advocate_profile")
     return render(request, "accounts/advocate_profile_form.html", {"form": form, "profile": profile})
+
+
+@login_required
+def edit_client_profile(request: HttpRequest) -> HttpResponse:
+    """Allow a client to edit only the profile attached to their account."""
+    if not request.user.is_client:
+        from django.core.exceptions import PermissionDenied
+
+        raise PermissionDenied("Only client accounts can edit a client profile.")
+    profile = request.user.client_profile
+    form = ClientProfileForm(request.POST or None, instance=profile)
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Your client profile has been saved.")
+        return redirect("accounts:edit_client_profile")
+    return render(request, "accounts/client_profile_form.html", {"form": form, "profile": profile})
 
 
 @login_required

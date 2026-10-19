@@ -82,6 +82,10 @@ Only an advocate whose profile is complete, verified through the staff workflow,
 
 This is not appointment booking, messaging, payment processing, or a representation agreement. Do not enter real client matter details into a local development database.
 
+## Client profiles in development
+
+Every client registration creates a private client profile. A signed-in client can manage their display name and optional preferred language/locality at `/account/client/profile/` or through the client dashboard. These preferences use the administrator-managed taxonomy records and are not public or automatically shared with advocates.
+
 ## Optional: access Django administration locally
 
 Create an administrator only for your local environment:

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}My client profile | Legal Connect{% endblock %}
+{% block content %}
+<section class="dashboard-header"><div class="container"><p class="eyebrow">Client profile</p><h1>Manage your private preferences</h1><p class="lead">These details are for your Legal Connect account. They are not displayed in the public advocate directory.</p></div></section>
+<section class="section"><div class="container form-layout"><form method="post" class="panel-form" novalidate>{% csrf_token %}
+  {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+  {% for field in form %}<div class="field private-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<p class="help-text">{{ field.help_text }}</p>{% endif %}{% if field.errors %}<p class="field-error">{{ field.errors|striptags }}</p>{% endif %}</div>{% endfor %}
+  <button class="button" type="submit">Save profile</button>
+</form><aside class="form-aside"><p class="eyebrow">Privacy</p><h2>Your details stay private</h2><p>Legal Connect does not publish this information on advocate profiles or the public directory. It is not automatically shared with advocates.</p><a href="{% url 'core:client_dashboard' %}">Return to dashboard</a></aside></div></section>
+{% endblock %}

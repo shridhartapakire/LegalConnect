@@ -4,7 +4,7 @@ Legal Connect is a production-oriented legal-services platform being planned for
 
 ## Current phase
 
-**Phase 3 — advocate discovery and consultation requests.** The project now provides secure account foundations, professional advocate profile onboarding, configurable practice-area/language/locality taxonomies, private verification applications, staff review workflows, and private client-to-advocate consultation requests.
+**Current implementation — client profiles added after Phase 3.** The project now provides secure account foundations, private client-profile preferences, professional advocate profile onboarding, configurable practice-area/language/locality taxonomies, private verification applications, staff review workflows, and private client-to-advocate consultation requests.
 
 It does **not** yet implement appointments, client/advocate messaging, payments, video, WhatsApp/SMS, notification delivery, or AI. A consultation request is not an appointment, representation agreement, or legal advice. Advocate verification evidence remains quarantined until an actual malware-scanning service is configured; upload alone never marks evidence safe or an advocate verified.
 
@@ -59,3 +59,5 @@ The approved planning documents remain the source of truth. This is a modular Dj
 `apps.verification` owns configurable evidence types, verification applications, review history, private evidence metadata, and staff-only review screens. Public advocate profiles are visible only when a profile is complete, actually verified through the workflow, and explicitly published.
 
 `apps.consultations` owns the public directory and the consultation-request lifecycle. Only complete, verified, published profiles appear in the directory. Requests are private to their client and selected advocate, record state-change history, and use the limited Phase 3 intake only; there are no documents, messages, appointments, or automated notifications in this domain yet.
+
+`apps.accounts` also owns private client profiles. Every client account receives a profile at registration and can edit its display name plus optional preferred language and locality using the administrator-managed taxonomies. These preferences are neither public nor automatically disclosed to advocates.

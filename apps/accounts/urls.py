@@ -10,6 +10,7 @@ urlpatterns = [
     path("login/", views.LegalConnectLoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path("register/<str:role>/", views.register, name="register"),
+    path("client/profile/", views.edit_client_profile, name="edit_client_profile"),
     path("advocate/profile/", views.edit_advocate_profile, name="edit_advocate_profile"),
     path("advocate/profile/ready/", views.mark_profile_ready, name="mark_profile_ready"),
     path("advocate/profile/publish/", views.publish_profile, name="publish_profile"),

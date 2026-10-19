@@ -51,3 +51,7 @@ Only the owning advocate or staff may request an authorised verification-documen
 ## Phase 3 consultation-request controls
 
 The public directory filters to profiles that are published and actually verified; direct request creation applies the same gate. Consultation requests use opaque UUID routes and object-scoped queries: only the owning client can read or withdraw a request, and only the selected advocate can view or review it. The advocate inbox intentionally exposes only the minimum request intake, not private profile data, verification evidence, documents, messages, or payment data. Declining requires a recorded reason. No document upload or download path exists for consultation requests in this phase.
+
+## Client-profile controls
+
+Client profile editing is authenticated and bound directly to `request.user.client_profile`; there is no user-supplied profile identifier in the edit route. Only client accounts may access it. Display name and preferences remain private account data, are absent from public advocate and directory views, and are not automatically included in advocate request views.

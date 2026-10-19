@@ -24,6 +24,7 @@
             <li><a href="{% url 'core:dashboard_redirect' %}">Dashboard</a></li>
             {% if user.is_advocate %}<li><a href="{% url 'accounts:edit_advocate_profile' %}">My profile</a></li>{% endif %}
             {% if user.is_client %}<li><a href="{% url 'consultations:client_requests' %}">My requests</a></li>{% endif %}
+            {% if user.is_client %}<li><a href="{% url 'accounts:edit_client_profile' %}">My profile</a></li>{% endif %}
             {% if user.is_advocate %}<li><a href="{% url 'consultations:advocate_requests' %}">Request inbox</a></li>{% endif %}
             {% if user.is_staff %}<li><a href="/admin/">Management</a></li>{% endif %}
             <li>

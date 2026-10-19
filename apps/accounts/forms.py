@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.password_validation import validate_password
 
-from .models import AdvocateProfile, Language, Locality, PracticeArea, User
+from .models import AdvocateProfile, ClientProfile, Language, Locality, PracticeArea, User
 
 
 class LoginForm(AuthenticationForm):
@@ -96,3 +96,26 @@ class AdvocateProfileForm(forms.ModelForm):
         if photo.size > 5 * 1024 * 1024:
             raise forms.ValidationError("The profile photo must be 5 MB or smaller.")
         return photo
+
+
+class ClientProfileForm(forms.ModelForm):
+    """Private, minimal client preferences using administrator-managed choices."""
+
+    class Meta:
+        model = ClientProfile
+        fields = ("display_name", "preferred_language", "preferred_locality")
+        labels = {
+            "display_name": "Display name",
+            "preferred_language": "Preferred language",
+            "preferred_locality": "Preferred locality",
+        }
+        help_texts = {
+            "display_name": "Private to your account. It is not shown in the public advocate directory.",
+            "preferred_language": "Used only to improve your own Legal Connect experience.",
+            "preferred_locality": "Used only to improve your own Legal Connect experience.",
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["preferred_language"].queryset = Language.objects.filter(is_active=True)
+        self.fields["preferred_locality"].queryset = Locality.objects.filter(is_active=True)

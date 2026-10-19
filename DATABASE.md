@@ -90,3 +90,7 @@ The verification domain implements `VerificationEvidenceType`, `VerificationAppl
 ## Phase 3 implementation status
 
 `ConsultationRequest` is implemented with an opaque `public_id`, one `ClientProfile`, one selected `AdvocateProfile`, minimal subject/description/practice-area/mode/locality intake, timestamps, and the states `DRAFT`, `SUBMITTED`, `UNDER_REVIEW`, `ACCEPTED`, `DECLINED`, `WITHDRAWN`, `EXPIRED`, and `CLOSED`. `RequestStatusEvent` records the actor, transition, reason, and timestamp for each application-controlled transition. This Phase 3 model has no appointment, message, document, conflict-check, payment, or notification relation.
+
+## Client-profile implementation status
+
+`ClientProfile` now has optional `preferred_language` and `preferred_locality` foreign keys to the administrator-managed `Language` and `Locality` records. The original free-text `locality` column remains only for compatibility with the foundation schema and is not used by the client-facing editor. Both preference foreign keys use `SET_NULL` so a taxonomy record can be retired without deleting a client profile.

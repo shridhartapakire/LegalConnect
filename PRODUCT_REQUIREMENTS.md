@@ -168,3 +168,7 @@ Phase 2 delivers the advocate professional-profile and verification foundation. 
 ## Phase 3 implementation status
 
 Phase 3 delivers advocate discovery and a private consultation-request workflow. The directory exposes only complete, verified, and published advocate profiles and supports name/headline/description search plus practice-area, language, service-area, consultation-mode, sorting, and pagination filters. A client may submit a minimal request to one selected advocate, then view or withdraw it. The selected advocate alone can start review, accept, or decline with a required reason. Every state change records an audit event. Requests are not appointments, conversations, documents, payments, notifications, or representations.
+
+## Client-profile implementation status
+
+Every client account receives a private profile on registration. Clients can edit their own display name and optional preferred language and locality through an authenticated profile page. Language and locality choices are drawn from administrator-managed active taxonomy records. Client profile values are not public and are not automatically disclosed to advocates; information sharing remains governed by the consultation workflow.

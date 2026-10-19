@@ -61,3 +61,7 @@ The implemented suite covers professional profile editing, selection of active p
 ## Phase 3 automated coverage
 
 The suite covers directory visibility/search/filtering, public profile eligibility, consultation submission, status-event creation, client and advocate object ownership boundaries, withdrawal, start-review and acceptance transitions, decline-reason validation, and practice-area restrictions. Tests use only isolated test-database records and no real client or advocate data.
+
+## Client-profile automated coverage
+
+The suite covers automatic profile creation, client-owned profile editing, active language/locality selection, invalid and inactive taxonomy input, unauthenticated and advocate-role denial, and attempts to view or modify another client's profile through supplied query data. These tests use isolated test-database records only.

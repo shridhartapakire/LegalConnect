@@ -5,5 +5,6 @@
 <section class="section"><div class="container dashboard-grid">
   <article class="dashboard-card"><h2>Find an advocate</h2><p>Search verified, published advocates by practice area, language, locality, or consultation mode.</p><a class="button button-small" href="{% url 'consultations:directory' %}">Browse advocates</a></article>
   <article class="dashboard-card"><h2>Your requests</h2><p>Review submitted consultation requests or withdraw an unanswered request.</p><a class="button button-small" href="{% url 'consultations:client_requests' %}">View requests</a></article>
+  <article class="dashboard-card"><h2>Your profile</h2><p>Manage your private display name and preferences. These details are not published to advocates or the directory.</p><a class="button button-small" href="{% url 'accounts:edit_client_profile' %}">Manage profile</a></article>
 </div></section>
 {% endblock %}

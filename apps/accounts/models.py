@@ -99,6 +99,23 @@ class ClientProfile(models.Model):
         User, on_delete=models.CASCADE, related_name="client_profile"
     )
     display_name = models.CharField(max_length=120, blank=True)
+    preferred_language = models.ForeignKey(
+        "Language",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="preferred_by_client_profiles",
+    )
+    preferred_locality = models.ForeignKey(
+        "Locality",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="preferred_by_client_profiles",
+    )
+    # Kept only for compatibility with the initial foundation schema. New
+    # client-facing profile edits use preferred_locality from the managed
+    # locality taxonomy instead of collecting unrestricted free text.
     locality = models.CharField(max_length=120, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -23,8 +23,9 @@ class LegalConnectUserAdmin(UserAdmin):
 
 @admin.register(ClientProfile)
 class ClientProfileAdmin(admin.ModelAdmin):
-    list_display = ("user", "display_name", "locality", "created_at")
-    search_fields = ("user__email", "display_name", "locality")
+    list_display = ("user", "display_name", "preferred_language", "preferred_locality", "created_at")
+    search_fields = ("user__email", "display_name", "preferred_locality__name")
+    list_select_related = ("user", "preferred_language", "preferred_locality")
 
 
 @admin.register(AdvocateProfile)
