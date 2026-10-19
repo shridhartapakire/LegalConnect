@@ -19,9 +19,12 @@
       <nav aria-label="Primary navigation">
         <ul class="nav-links">
           <li><a href="{% url 'core:home' %}#how-it-works">How it works</a></li>
+          <li><a href="{% url 'consultations:directory' %}">Find an advocate</a></li>
           {% if user.is_authenticated %}
             <li><a href="{% url 'core:dashboard_redirect' %}">Dashboard</a></li>
             {% if user.is_advocate %}<li><a href="{% url 'accounts:edit_advocate_profile' %}">My profile</a></li>{% endif %}
+            {% if user.is_client %}<li><a href="{% url 'consultations:client_requests' %}">My requests</a></li>{% endif %}
+            {% if user.is_advocate %}<li><a href="{% url 'consultations:advocate_requests' %}">Request inbox</a></li>{% endif %}
             {% if user.is_staff %}<li><a href="/admin/">Management</a></li>{% endif %}
             <li>
               <form action="{% url 'accounts:logout' %}" method="post">

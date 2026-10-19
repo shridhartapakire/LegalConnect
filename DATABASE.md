@@ -86,3 +86,7 @@ User ──1:1── ClientProfile ──1:N── ConsultationRequest ──1:N
 Implemented profile taxonomy records are `PracticeArea`, `Language`, and `Locality`; they are administrator-managed and advocates select from active records. `AdvocateProfile` stores separate publication and verification statuses, public professional fields, a private office-address field, and profile-completion inputs.
 
 The verification domain implements `VerificationEvidenceType`, `VerificationApplication`, `VerificationDocument`, `VerificationReviewEvent`, and `VerificationDocumentAccessEvent`. Verification documents have generated private storage paths, an original-filename record, byte-size record, replacement state, and scan status. They are not public URL resources. A document is only downloadable through an authorised application route after its status is explicitly `CLEAN`.
+
+## Phase 3 implementation status
+
+`ConsultationRequest` is implemented with an opaque `public_id`, one `ClientProfile`, one selected `AdvocateProfile`, minimal subject/description/practice-area/mode/locality intake, timestamps, and the states `DRAFT`, `SUBMITTED`, `UNDER_REVIEW`, `ACCEPTED`, `DECLINED`, `WITHDRAWN`, `EXPIRED`, and `CLOSED`. `RequestStatusEvent` records the actor, transition, reason, and timestamp for each application-controlled transition. This Phase 3 model has no appointment, message, document, conflict-check, payment, or notification relation.

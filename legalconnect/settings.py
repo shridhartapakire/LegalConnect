@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "apps.accounts.apps.AccountsConfig",
     "apps.core.apps.CoreConfig",
     "apps.verification.apps.VerificationConfig",
+    "apps.consultations.apps.ConsultationsConfig",
 ]
 
 MIDDLEWARE = [

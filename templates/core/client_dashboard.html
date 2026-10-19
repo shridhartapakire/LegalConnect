@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Client dashboard | Legal Connect{% endblock %}
 {% block content %}
-<section class="dashboard-header"><div class="container"><p class="eyebrow">Client dashboard</p><h1>Welcome to Legal Connect</h1><p class="lead">Your secure client area is ready. Consultation requests and appointments will be introduced in a later approved phase.</p></div></section>
+<section class="dashboard-header"><div class="container"><p class="eyebrow">Client dashboard</p><h1>Welcome to Legal Connect</h1><p class="lead">Find a verified advocate and manage your consultation requests in one private place.</p></div></section>
 <section class="section"><div class="container dashboard-grid">
-  <article class="dashboard-card"><h2>Your account</h2><p>You are signed in securely as a client.</p><span class="status-pill">Foundation ready</span></article>
-  <article class="dashboard-card"><h2>Coming next</h2><p>Once implemented, you will be able to find advocates and manage consultation requests here.</p></article>
+  <article class="dashboard-card"><h2>Find an advocate</h2><p>Search verified, published advocates by practice area, language, locality, or consultation mode.</p><a class="button button-small" href="{% url 'consultations:directory' %}">Browse advocates</a></article>
+  <article class="dashboard-card"><h2>Your requests</h2><p>Review submitted consultation requests or withdraw an unanswered request.</p><a class="button button-small" href="{% url 'consultations:client_requests' %}">View requests</a></article>
 </div></section>
 {% endblock %}

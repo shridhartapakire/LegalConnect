@@ -164,3 +164,7 @@ Metrics must use minimised, aggregated data and must not train AI or market to u
 ## Phase 2 implementation status
 
 Phase 2 delivers the advocate professional-profile and verification foundation. Advocates can complete a private/publicly separated profile, select administrator-managed practice areas, languages, localities, and in-person/phone modes, then submit configurable professional evidence for staff review. A profile is public only when it is complete, actually verified, and explicitly published. Consultation, appointment, messaging, payments, AI, and notification workflows remain out of scope.
+
+## Phase 3 implementation status
+
+Phase 3 delivers advocate discovery and a private consultation-request workflow. The directory exposes only complete, verified, and published advocate profiles and supports name/headline/description search plus practice-area, language, service-area, consultation-mode, sorting, and pagination filters. A client may submit a minimal request to one selected advocate, then view or withdraw it. The selected advocate alone can start review, accept, or decline with a required reason. Every state change records an audit event. Requests are not appointments, conversations, documents, payments, notifications, or representations.

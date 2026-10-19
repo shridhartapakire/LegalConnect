@@ -76,6 +76,12 @@ python manage.py test
 python manage.py makemigrations --check --dry-run
 ```
 
+## Consultation requests in development
+
+Only an advocate whose profile is complete, verified through the staff workflow, and published appears at `/advocates/`. A signed-in client can submit a minimal consultation request from that advocate's public profile. The advocate can review, accept, or decline it from `/advocate/requests/`.
+
+This is not appointment booking, messaging, payment processing, or a representation agreement. Do not enter real client matter details into a local development database.
+
 ## Optional: access Django administration locally
 
 Create an administrator only for your local environment:

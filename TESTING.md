@@ -57,3 +57,7 @@ Before enabling each AI feature, test against an approved de-identified evaluati
 ## Phase 2 automated coverage
 
 The implemented suite covers professional profile editing, selection of active practice-area/language/locality records, profile completion and publication gates, public visibility rules, verification submission, required-evidence validation, staff approval, rejection-reason validation, suspension/revocation, review history, private document access, and staff-only verification management. Existing Phase 1 account, authentication, dashboard-role, public-page, and health tests remain part of the suite.
+
+## Phase 3 automated coverage
+
+The suite covers directory visibility/search/filtering, public profile eligibility, consultation submission, status-event creation, client and advocate object ownership boundaries, withdrawal, start-review and acceptance transitions, decline-reason validation, and practice-area restrictions. Tests use only isolated test-database records and no real client or advocate data.

@@ -4,9 +4,9 @@ Legal Connect is a production-oriented legal-services platform being planned for
 
 ## Current phase
 
-**Phase 2 — advocate profiles and verification.** The project now provides secure account foundations, professional advocate profile onboarding, configurable practice-area/language/locality taxonomies, private verification applications, and staff review workflows.
+**Phase 3 — advocate discovery and consultation requests.** The project now provides secure account foundations, professional advocate profile onboarding, configurable practice-area/language/locality taxonomies, private verification applications, staff review workflows, and private client-to-advocate consultation requests.
 
-It does **not** yet implement consultation requests, appointments, client/advocate messaging, payments, video, WhatsApp/SMS, notification delivery, or AI. Advocate verification evidence remains quarantined until an actual malware-scanning service is configured; upload alone never marks evidence safe or an advocate verified.
+It does **not** yet implement appointments, client/advocate messaging, payments, video, WhatsApp/SMS, notification delivery, or AI. A consultation request is not an appointment, representation agreement, or legal advice. Advocate verification evidence remains quarantined until an actual malware-scanning service is configured; upload alone never marks evidence safe or an advocate verified.
 
 ## Technology stack
 
@@ -57,3 +57,5 @@ python manage.py makemigrations --check --dry-run
 The approved planning documents remain the source of truth. This is a modular Django monolith: `apps.accounts` owns identity, roles, and profile foundations; `apps.core` owns public/shared UI and protected dashboard shells. Later approved phases will add domains only when their workflows are implemented.
 
 `apps.verification` owns configurable evidence types, verification applications, review history, private evidence metadata, and staff-only review screens. Public advocate profiles are visible only when a profile is complete, actually verified through the workflow, and explicitly published.
+
+`apps.consultations` owns the public directory and the consultation-request lifecycle. Only complete, verified, published profiles appear in the directory. Requests are private to their client and selected advocate, record state-change history, and use the limited Phase 3 intake only; there are no documents, messages, appointments, or automated notifications in this domain yet.
